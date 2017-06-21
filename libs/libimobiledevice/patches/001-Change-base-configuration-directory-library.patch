@@ -1,0 +1,27 @@
+From 3a7133302c354547d1acc328d0276cca0ed4b383 Mon Sep 17 00:00:00 2001
+From: Lukasz Baj <l.baj@radytek.com>
+Date: Fri, 16 May 2014 15:51:38 +0200
+Subject: [PATCH] Change base configuration directory - library
+
+Directory /var/lib for OpenWrt resides in tmpfs (temporary) file system,
+so change storage for Apple devices to permament file system.
+---
+ common/userpref.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/common/userpref.c b/common/userpref.c
+index 8076287..7264350 100644
+--- a/common/userpref.c
++++ b/common/userpref.c
+@@ -153,7 +153,7 @@ const char *userpref_get_config_dir()
+ #ifdef __APPLE__
+ 	base_config_dir = strdup("/var/db");
+ #else
+-	base_config_dir = strdup("/var/lib");
++	base_config_dir = strdup("/etc");
+ #endif
+ #endif
+ 	__config_dir = string_concat(base_config_dir, DIR_SEP_S, USERPREF_CONFIG_DIR, NULL);
+-- 
+1.9.1
+

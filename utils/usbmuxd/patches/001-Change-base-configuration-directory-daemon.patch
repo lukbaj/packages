@@ -1,0 +1,27 @@
+From b47243ba6246ef140c278a0dbcdf1bbb24bf804c Mon Sep 17 00:00:00 2001
+From: Lukasz Baj <l.baj@radytek.com>
+Date: Fri, 16 May 2014 15:54:10 +0200
+Subject: [PATCH] Change base configuration directory - daemon
+
+Directory /var/lib for OpenWrt resides in tmpfs (temporary) file system,
+so change storage for Apple devices to permament file system.
+---
+ src/conf.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/conf.c b/src/conf.c
+index 2a90922..ab64ddd 100644
+--- a/src/conf.c
++++ b/src/conf.c
+@@ -127,7 +127,7 @@ const char *config_get_config_dir()
+ #ifdef __APPLE__
+ 	base_config_dir = strdup("/var/db");
+ #else
+-	base_config_dir = strdup("/var/lib");
++	base_config_dir = strdup("/etc");
+ #endif
+ #endif
+ 	__config_dir = string_concat(base_config_dir, DIR_SEP_S, CONFIG_DIR, NULL);
+-- 
+1.9.1
+

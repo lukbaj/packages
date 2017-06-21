@@ -1,0 +1,13 @@
+diff --git a/Makefile.in b/Makefile.in
+index 7a1c241..ca6c0ff 100644
+--- a/Makefile.in
++++ b/Makefile.in
+@@ -270,7 +270,7 @@ clean-p5-dns-ldns: $(p5_dns_ldns_dir)/Makefile
+ test-p5-dns-ldns: $(p5_dns_ldns_dir)/Makefile
+ 	cd $(p5_dns_ldns_dir); $(MAKE) test
+ 
+-install: install-h install-lib @INSTALL_CONFIG@ install-manpages $(pyldns_inst) $(pyldnsx_inst) @INSTALL_P5_DNS_LDNS@ @INSTALL_DRILL@ @INSTALL_EXAMPLES@
++install: install-h install-lib @INSTALL_CONFIG@ $(pyldns_inst) $(pyldnsx_inst) @INSTALL_P5_DNS_LDNS@ @INSTALL_DRILL@ @INSTALL_EXAMPLES@
+ 
+ uninstall: uninstall-manpages @UNINSTALL_CONFIG@ uninstall-h uninstall-lib $(pyldns_uninst) $(pyldnsx_uninst) @UNINSTALL_P5_DNS_LDNS@ @UNINSTALL_DRILL@ @UNINSTALL_EXAMPLES@
+ 
